@@ -46,6 +46,16 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: GeneralSans, sans-serif;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(204, 204, 204, 0.8);
+      border-radius: 4px;
+    }
   }
 
   body {
