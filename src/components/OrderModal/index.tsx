@@ -12,14 +12,8 @@ interface OrderModalProps {
   onChangeOrderStatus: (order: Order) => Promise<void>;
 }
 
-export function OrderModal({
-  visible,
-  order,
-  onClose,
-  onCancelOrder,
-  onChangeOrderStatus,
-  isLoading
-}: OrderModalProps) {
+export function OrderModal(props: OrderModalProps) {
+  const { visible, order, onClose, onCancelOrder, onChangeOrderStatus, isLoading } = props;
 
   if(!visible || !order) return null;
 
@@ -61,7 +55,7 @@ export function OrderModal({
             {order.products.map(({_id, product, quantity}) => (
               <div key={_id} className="item">
                 <img
-                  src={`http://localhost:3001/uploads/${product.imagePath}`}
+                  src={`${import.meta.env.VITE_APP_URL_API}/uploads/${product.imagePath}`}
                   alt={product.name}
                   width={56}
                   height={28.51}
