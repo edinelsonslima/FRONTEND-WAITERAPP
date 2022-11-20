@@ -69,7 +69,7 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
       <header>
         <span>{icon}</span>
         <strong>{title}</strong>
-        <span>(1)</span>
+        <span>({orders.length})</span>
       </header>
 
       {!!orders.length &&(
