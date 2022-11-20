@@ -51,4 +51,21 @@ export const OrdersContainer = styled.div`
       margin-top: 24px;
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: row;
+    overflow-x: auto;
+
+    gap: 24px;
+
+    button {
+       min-width: 128px;
+       max-width: 128px;
+
+       & + button {
+        margin-top: 0px;
+        margin-bottom: 24px;
+      }
+    }
+  }
 `;
