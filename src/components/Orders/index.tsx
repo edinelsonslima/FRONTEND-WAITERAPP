@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import socketIo from 'socket.io-client';
 
-import { Order } from '../../types/Order';
 import { api } from '../../utils/api';
+import { Order } from '../../types/Order';
 import { OrdersBoard } from '../OrdersBoard';
-import { Container } from './styles';
 
+import { Container } from './styles';
 
 interface OrdersReduce {
   done: Order[];
@@ -15,7 +15,6 @@ interface OrdersReduce {
 
 export function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
-
 
   function handleCancelOrder(orderId: string) {
     setOrders(orders.filter((order) => order._id !== orderId));
@@ -41,7 +40,7 @@ export function Orders() {
 
 
   useEffect(() => {
-    const socket = socketIo('http://192.168.3.57:3001', {
+    const socket = socketIo(import.meta.env.VITE_APP_URL_API, {
       transports: ['websocket'],
     });
 
@@ -52,17 +51,17 @@ export function Orders() {
     return () => {
       socket.disconnect();
     };
-
   }, []);
 
   useEffect(() => {
-    api.get<Order[]>('/orders')
-      .then(({data}) => setOrders(data));
+    (async () => {
+      const { data } = await api.get('/orders');
+      setOrders(data);
+    })();
   }, []);
 
   return (
     <Container>
-
       <OrdersBoard
         icon="🕒"
         title="Fila de espera"
