@@ -12,18 +12,19 @@ export const Container = styled.header`
 export const Content = styled.div`
   width: 100%;
   max-width: 1216px;
+  padding: 16px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   .page-details {
-    h1{
+    > h1 {
       color: #FFF;
       font-size: 32px;
     }
 
-    h2{
+    > h2 {
       color: #FFF;
       font-weight: 400;
       font-size: 16px;
